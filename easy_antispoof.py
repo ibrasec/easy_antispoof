@@ -1,6 +1,6 @@
 #!/usr/bin/env python2.7
 from netaddr import IPNetwork
-
+import netaddr.core
 
 def isvalidip(ip):
     '''
@@ -20,6 +20,7 @@ def isvalidip(ip):
         return False
     except ValueError:
         return False
+
 
 
 cust = raw_input("Enter The Customer Name\n")
