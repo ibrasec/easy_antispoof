@@ -30,7 +30,21 @@ how_many = input("Enter how many public subnets are assigned to the customer (ex
 
 
 def get_subnets(i):
-        return [ raw_input("Enter the public subnet #" + str(i+1) + " (ex: 1.1.1.0/30)\n").strip() for i in range(i) ]
+        subnet_list = list()
+        for iteration in range(i):
+                while True:
+                        public_subnet = raw_input("Enter the public subnet #" + str(iteration+1) + " (ex: 1.1.1.0/30)\n").strip() 
+                        if isvalidip( public_subnet):
+                                print public_subnet
+                                if '/' not in public_subnet:
+                                        print("[!] Please Re-Enter the subnet followed by subnet mask")
+                                else:
+                                        subnet_list.append( public_subnet )
+                                        break
+                        else:
+                                print("Please Enter a vaild ip subnet")
+                                continue
+        return subnet_list
 
 
 def get_wildcard_mask(subnet):
