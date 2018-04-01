@@ -2,6 +2,26 @@
 from netaddr import IPNetwork
 
 
+def isvalidip(ip):
+    '''
+    To check if the passed ip address is a valid ipv4 or ipv6 address
+    example:
+    >>>isvalidip('10.1.1.1')
+    True
+    >>>isvalidip('10.1.1.1.')
+    False
+    >>>isvalidip('2001:db8::1/120')
+    True
+    '''
+    try:
+        IP = IPNetwork(ip.strip())
+        return True
+    except netaddr.core.AddrFormatError:
+        return False
+    except ValueError:
+        return False
+
+
 cust = raw_input("Enter The Customer Name\n")
 #vlan = raw_input("Enter vlan id\n")
 interface = raw_input("Enter the FastEthernet/GigabitEthernet interface number (ex: 1/0/14)\n")
