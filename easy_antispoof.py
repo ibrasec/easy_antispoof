@@ -1,13 +1,15 @@
 #!/usr/bin/env python2.7
 from netaddr import IPNetwork
-cust = raw_input("Enter Customer Name\n")
+
+
+cust = raw_input("Enter The Customer Name\n")
 #vlan = raw_input("Enter vlan id\n")
-interface = raw_input("Enter the Gigabit interface number (ex: 1/0/14)\n")
-how_many = input("Enter how many public ip addresses are there (ex: 1)\n")
+interface = raw_input("Enter the FastEthernet/GigabitEthernet interface number (ex: 1/0/14)\n")
+how_many = input("Enter how many public subnets are assigned to the customer (ex: 1)\n")
 
 
 def get_subnets(i):
-        return [ raw_input("Enter the public subnet (ex: 1.1.1.0/30)\n").strip() for i in range(i) ]
+        return [ raw_input("Enter the public subnet #" + str(i+1) + " (ex: 1.1.1.0/30)\n").strip() for i in range(i) ]
 
 
 def get_wildcard_mask(subnet):
